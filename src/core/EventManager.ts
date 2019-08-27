@@ -122,7 +122,7 @@ export default class EventManager {
   }
 
   public destroy() {
-    if (!this.sshe.isDestroyed) {
+    if (!this.sshe.isDestroyed()) {
       this.sshe.destroy()
     }
   }

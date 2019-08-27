@@ -10,12 +10,12 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   snapshotSerializers: ['jest-serializer-vue'],
-  testMatch: ['**/tests/unit/**/*.test.(js|jsx|ts|tsx)', '**/__tests__/*.test.(js|jsx|ts|tsx)'],
+  testMatch: ['**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.test.(js|jsx|ts|tsx)'],
   testURL: 'http://localhost/',
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
-  globals: {
-    'ts-jest': {
-      babelConfig: true,
-    },
-  },
+  // globals: {
+  //   'ts-jest': {
+  //     babelConfig: true,
+  //   },
+  // }, // 变量会导致Jest运行失败，报ReferenceError: requirejsVars is not defined
 }

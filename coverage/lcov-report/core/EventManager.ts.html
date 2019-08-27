@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for core/EventManager.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\prettify.css" />
+    <link rel="stylesheet" href="..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\index.html">All files</a> / <a href="index.html">core</a> EventManager.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">69.52% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>73/105</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">44.23% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>23/52</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">69.57% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>16/23</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">67.01% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>65/97</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">85x</span>
+<span class="cline-any cline-yes">85x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">85x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">85x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70x</span>
+<span class="cline-any cline-yes">70x</span>
+<span class="cline-any cline-yes">67x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Cesium, { ScreenSpaceEventType, ScreenSpaceEventHandler } from 'cesium'
+&nbsp;
+import { pickedObjectEquals } from './util'
+&nbsp;
+export type EventType =
+  | 'onClick'
+  | 'onDoubleClick'
+  | 'onMouseDown'
+  | 'onMouseUp'
+  | 'onMiddleClick'
+  | 'onMiddleDown'
+  | 'onMiddleUp'
+  | 'onMouseMove'
+  | 'onPinchEnd'
+  | 'onPinchMove'
+  | 'onPinchStart'
+  | 'onRightClick'
+  | 'onRightDown'
+  | 'onRightUp'
+  | 'onWheel'
+  | 'onMouseEnter'
+  | 'onMouseLeave'
+&nbsp;
+type EventMap&lt;T&gt; = { [key in EventType]: T }
+&nbsp;
+export interface CesiumMovementEvent {
+  position?: Cesium.Cartesian2
+  startPositon?: Cesium.Cartesian2
+  endPosition?: Cesium.Cartesian2
+}
+&nbsp;
+export interface EventProps&lt;T&gt; {
+  onClick?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onDoubleClick?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onMouseDown?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onMouseUp?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onMiddleClick?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onMiddleDown?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onMiddleUp?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onMouseMove?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onPinchEnd?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onPinchMove?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onPinchStart?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onRightClick?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onRightDown?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onRightUp?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onWheel?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onMouseEnter?: (movement: CesiumMovementEvent, target: T) =&gt; void
+  onMouseLeave?: (movement: CesiumMovementEvent, target: T) =&gt; void
+}
+&nbsp;
+export type Callback&lt;T = any&gt; = (e: CesiumMovementEvent, source: T) =&gt; void
+&nbsp;
+export const eventNames: EventType[] = [
+  'onClick',
+  'onDoubleClick',
+  'onMouseDown',
+  'onMouseUp',
+  'onMiddleClick',
+  'onMiddleDown',
+  'onMiddleUp',
+  'onMouseMove',
+  'onPinchEnd',
+  'onPinchMove',
+  'onPinchStart',
+  'onRightClick',
+  'onRightDown',
+  'onRightUp',
+  'onWheel',
+  'onMouseEnter',
+  'onMouseLeave',
+]
+&nbsp;
+export default class EventManager {
+  private static eventTypeMap: EventMap&lt;ScreenSpaceEventType&gt; = {
+    onClick: ScreenSpaceEventType.LEFT_CLICK,
+    onDoubleClick: ScreenSpaceEventType.LEFT_DOUBLE_CLICK,
+    onMouseDown: ScreenSpaceEventType.LEFT_DOWN,
+    onMouseUp: ScreenSpaceEventType.LEFT_UP,
+    onMiddleClick: ScreenSpaceEventType.MIDDLE_CLICK,
+    onMiddleDown: ScreenSpaceEventType.MIDDLE_DOWN,
+    onMiddleUp: ScreenSpaceEventType.MIDDLE_UP,
+    onMouseMove: ScreenSpaceEventType.MOUSE_MOVE,
+    onPinchEnd: ScreenSpaceEventType.PINCH_END,
+    onPinchMove: ScreenSpaceEventType.PINCH_MOVE,
+    onPinchStart: ScreenSpaceEventType.PINCH_START,
+    onRightClick: ScreenSpaceEventType.RIGHT_CLICK,
+    onRightDown: ScreenSpaceEventType.RIGHT_DOWN,
+    onRightUp: ScreenSpaceEventType.RIGHT_UP,
+    onWheel: ScreenSpaceEventType.WHEEL,
+    onMouseEnter: ScreenSpaceEventType.MOUSE_MOVE,
+    onMouseLeave: ScreenSpaceEventType.MOUSE_MOVE,
+  }
+&nbsp;
+  private scene: Cesium.Scene
+  private sshe: ScreenSpaceEventHandler
+  private events: EventMap&lt;Map&lt;any, Callback&gt;&gt; = {
+    onClick: new Map(),
+    onDoubleClick: new Map(),
+    onMouseDown: new Map(),
+    onMouseUp: new Map(),
+    onMiddleClick: new Map(),
+    onMiddleDown: new Map(),
+    onMiddleUp: new Map(),
+    onMouseMove: new Map(),
+    onPinchEnd: new Map(),
+    onPinchMove: new Map(),
+    onPinchStart: new Map(),
+    onRightClick: new Map(),
+    onRightDown: new Map(),
+    onRightUp: new Map(),
+    onWheel: new Map(),
+    onMouseEnter: new Map(),
+    onMouseLeave: new Map(),
+  }
+  private hovered = new Map&lt;any, boolean&gt;()
+  private changed = new Map&lt;any, boolean&gt;()
+&nbsp;
+  public constructor(scene: Cesium.Scene, canvas: HTMLCanvasElement) {
+    this.scene = scene
+    this.sshe = new ScreenSpaceEventHandler(canvas)
+  }
+&nbsp;
+  public destroy() {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (!this.sshe.isDestroyed()) {
+      this.sshe.destroy()
+    }
+  }
+&nbsp;
+  public isDestroyed() {
+    return this.sshe.isDestroyed()
+  }
+&nbsp;
+  public on(element: any, type: EventType, cb: Callback) {
+    this.events[type].set(element, cb)
+  }
+&nbsp;
+  public off(element: any, type: EventType) {
+    this.events[type].delete(element)
+  }
+&nbsp;
+  public setEvents(element: any, props: object) {
+    Object.entries(props).forEach(([k, v]) =&gt; {
+      const et = k as EventType
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (eventNames.includes(et)) {
+        if (v) {
+          this.on(element, et, v)
+        } else {
+          this.off(element, et)
+        }
+      }
+    })
+    this.commit()
+  }
+&nbsp;
+  public clearEvents(element: any) {
+    eventNames.forEach(et =&gt; {
+      this.off(element, et)
+    })
+    this.commit()
+  }
+&nbsp;
+  public commit() {
+    const sshe = this.sshe
+    const destroyed = this.sshe.isDestroyed()
+    const elements = new Set(this.hovered.keys())
+    const elements2 = new Set&lt;any&gt;()
+&nbsp;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (!destroyed) {
+      if (
+        this.events.onMouseEnter.size === 0 &amp;&amp;
+        this.events.onMouseLeave.size === 0 &amp;&amp;
+        this.events.onMouseMove.size === 0
+      ) {
+        this.sshe.removeInputAction(ScreenSpaceEventType.MOUSE_MOVE)
+      } else <span class="missing-if-branch" title="else path not taken" >E</span>if (!this.sshe.getInputAction(ScreenSpaceEventType.MOUSE_MOVE)) {
+        this.sshe.setInputAction(this.onMouseMove as any, ScreenSpaceEventType.MOUSE_MOVE)
+      }
+    }
+&nbsp;
+    Object.entries(this.events).forEach(([et, m]) =&gt; {
+      const eventType = et as EventType
+&nbsp;
+      m.forEach((v, k) =&gt; {
+        if (!this.hovered.has(k)) {
+          this.hovered.set(k, false)
+        }
+        elements2.add(k)
+      })
+&nbsp;
+      if (et === 'onMouseEnter' || et === 'onMouseLeave' || et === 'onMouseMove') {
+        return
+      }
+&nbsp;
+      const cesiumEventType = EventManager.eventTypeMap[eventType]
+&nbsp;
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (!destroyed) {
+        if (m.size === 0) {
+          sshe.removeInputAction(cesiumEventType)
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>if (!sshe.getInputAction(cesiumEventType)) {
+          sshe.setInputAction(this.eventCallback(eventType) as any, cesiumEventType)
+        }
+      }
+&nbsp;
+      elements.forEach(e =&gt; {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (!elements2.has(e)) {
+          this.hovered.delete(e)
+        }
+      })
+    })
+  }
+&nbsp;
+  public getScreenSpaceEventHandler() {
+    return this.sshe
+  }
+&nbsp;
+  private eventCallback = (et: EventType) =&gt; <span class="fstat-no" title="function not covered" >(</span>e: CesiumMovementEvent) =&gt; {
+    const picked = <span class="cstat-no" title="statement not covered" >this.pick(e.position)</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (picked) {</span>
+<span class="cstat-no" title="statement not covered" >      this.events[et].forEach(<span class="fstat-no" title="function not covered" >(</span>cb, element) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        if (pickedObjectEquals(picked, element)) {</span>
+<span class="cstat-no" title="statement not covered" >          cb(e, element)</span>
+        }
+      })
+    }
+  }
+&nbsp;
+  private onMouseMove = <span class="fstat-no" title="function not covered" >(</span>e: CesiumMovementEvent) =&gt; {
+    const picked = <span class="cstat-no" title="statement not covered" >this.pick(e.endPosition)</span>
+<span class="cstat-no" title="statement not covered" >    this.changed.clear()</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.hovered.forEach(<span class="fstat-no" title="function not covered" >(</span>h, element) =&gt; {</span>
+      const p = <span class="cstat-no" title="statement not covered" >pickedObjectEquals(picked, element)</span>
+<span class="cstat-no" title="statement not covered" >      this.hovered.set(element, p)</span>
+<span class="cstat-no" title="statement not covered" >      if (p !== h) {</span>
+<span class="cstat-no" title="statement not covered" >        this.changed.set(element, p)</span>
+      }
+    })
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (picked) {</span>
+<span class="cstat-no" title="statement not covered" >      this.events.onMouseMove.forEach(<span class="fstat-no" title="function not covered" >(</span>cb, element) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        if (this.hovered.get(element)) {</span>
+<span class="cstat-no" title="statement not covered" >          cb(e, element)</span>
+        }
+      })
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.changed.forEach(<span class="fstat-no" title="function not covered" >(</span>hovered, element) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      if (hovered) {</span>
+        const onMouseEnter = <span class="cstat-no" title="statement not covered" >this.events.onMouseEnter.get(element)</span>
+<span class="cstat-no" title="statement not covered" >        if (onMouseEnter) {</span>
+<span class="cstat-no" title="statement not covered" >          onMouseEnter(e, element)</span>
+        }
+      } else {
+        const onMouseLeave = <span class="cstat-no" title="statement not covered" >this.events.onMouseLeave.get(element)</span>
+<span class="cstat-no" title="statement not covered" >        if (onMouseLeave) {</span>
+<span class="cstat-no" title="statement not covered" >          onMouseLeave(e, element)</span>
+        }
+      }
+    })
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  private pick(</span>pos?: Cesium.Cartesian2): any | undefined {
+<span class="cstat-no" title="statement not covered" >    if (!pos) {</span>
+<span class="cstat-no" title="statement not covered" >      return undefined</span>
+    }
+    const picked = <span class="cstat-no" title="statement not covered" >this.scene.pick(pos)</span>
+<span class="cstat-no" title="statement not covered" >    if (picked) {</span>
+      // Entity
+<span class="cstat-no" title="statement not covered" >      if (picked.id instanceof Cesium.Entity) {</span>
+<span class="cstat-no" title="statement not covered" >        return picked.id</span>
+      }
+      // Other
+<span class="cstat-no" title="statement not covered" >      return picked</span>
+    }
+<span class="cstat-no" title="statement not covered" >    return undefined</span>
+  }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Aug 27 2019 23:51:54 GMT+0800 (中国标准时间)
+</div>
+</div>
+<script src="..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\sorter.js"></script>
+</body>
+</html>
