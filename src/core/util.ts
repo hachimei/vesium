@@ -1,4 +1,4 @@
-import { Polyline, DistanceDisplayCondition } from "cesium";
+import { Polyline, DistanceDisplayCondition } from 'cesium'
 
 export const polylineEquals = (a: any, b: any) =>
   !!a &&
@@ -13,8 +13,8 @@ export const polylineEquals = (a: any, b: any) =>
   a.id === b.id &&
   DistanceDisplayCondition.equals(
     (a as any).distanceDisplayCondition,
-    (b as any).distanceDisplayCondition
-  );
+    (b as any).distanceDisplayCondition,
+  )
 
 export const pickedObjectEquals = (picked: any, element: any) =>
   !!picked &&
@@ -23,4 +23,4 @@ export const pickedObjectEquals = (picked: any, element: any) =>
     (!!picked.primitive &&
       (picked.primitive === element ||
         (!!picked.primitive.equals && picked.primitive.equals(element)) ||
-        polylineEquals(picked.primitive, element))));
+        polylineEquals(picked.primitive, element))))
