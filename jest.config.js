@@ -17,5 +17,5 @@ module.exports = {
   //   'ts-jest': {
   //     babelConfig: true,
   //   },
-  // }, // 变量会导致Jest运行失败，报ReferenceError: requirejsVars is not defined
+  // }, // 变量会导致Jest运行失败，报Passing cached plugin instances is not supported in babel.loadPartialConfig()
 }
