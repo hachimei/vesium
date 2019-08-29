@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "vue-cli-service test:unit",
-    "coverage":  "vue-cli-service test:unit --coverage"
+    "coverage": "vue-cli-service test:unit --coverage"
   },
   "dependencies": {
     "core-js": "~2.6.5",
@@ -36,6 +36,7 @@
     "prettier": "~1.18.2",
     "ts-jest": "~23.0.0",
     "typescript": "~3.4.3",
+    "vue-class-component": "^7.1.0",
     "vue-template-compiler": "~2.6.10"
   }
 }
