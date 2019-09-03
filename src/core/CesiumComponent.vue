@@ -1,5 +1,6 @@
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue'
+import pick from 'lodash.pick'
 
 type WithContextProps<P, C> = P & CesiumProp<C>
 
@@ -17,6 +18,8 @@ export interface CesiumComponentOption<E, P, C> {
   setCesiumPropsAfterCreate?: boolean
   noRender?: boolean
   createRef?: boolean
+  cesiumProps: (keyof P)[]
+  cesiumReadonlyProps: (keyof P)[]
 }
 
 const createCesiumComponent = <E, P, C>(
@@ -24,9 +27,24 @@ const createCesiumComponent = <E, P, C>(
 ): ComponentOptions<Vue> => {
   const CesiumComponent = Vue.extend({
     name: opts.name,
+    data() {
+      return {
+        ce:
+      }
+    },
     created() {
-      const cesiumProps = this.$props
-      const element = ''
+      let props = this.$props as WithContextProps<P, C>
+      this.create(props)
+    },
+    methods: {
+      create(props: Readonly<WithContextProps<P, C>>) {
+        const cesiumProps = pick(props, [
+          ...(opts.cesiumProps || []),
+          ...(opts.cesiumReadonlyProps || []),
+        ])
+        const element = opts.create(cesiumProps, props, props.cesium)
+        this.ce = element
+      },
     },
   }) as ComponentOptions<Vue>
   return CesiumComponent
