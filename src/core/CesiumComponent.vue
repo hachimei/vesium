@@ -1,11 +1,21 @@
 <script lang="ts">
-import Vue from 'vue'
-import Component from 'vue-class-component'
+import Vue, { ComponentOptions, PropsDefinition } from 'vue'
 
-export interface CesiumComponentOption<E, P, C, CC = {}, R = {}> {
+type DefaultData<V> = object | ((this: V) => object)
+type DefaultProps = Record<string, any>
+type DefaultMethods<V> = { [key: string]: (this: V, ...args: any[]) => any }
+type DefaultComputed = { [key: string]: any }
+export interface CesiumComponentOption<
+  V extends Vue,
+  Data = DefaultData<V>,
+  Methods = DefaultMethods<V>,
+  Computed = DefaultComputed,
+  PropsDef = PropsDefinition<DefaultProps>,
+  Props = DefaultProps
+> {
   name: string
   create: (
-    cesiumProps: Readonly<P>,
+    cesiumProps: Readonly<Vue.PropOptions>,
     props: Readonly<P>,
     context: Readonly<C>,
     ref?: R, // Vue的ref没有给类型(自己找的:{ [key: string]: Vue | Element | Vue[] | Element[] },它就是个Object),React是RefObject,
@@ -32,9 +42,16 @@ export interface CesiumComponentOption<E, P, C, CC = {}, R = {}> {
   setCesiumPropsAfterCreate?: boolean
   noRender?: boolean
   createRef?: boolean
-  defaultProps?: Partial<P>
 }
 
-@Component
-export class CesiumComponent extends Vue {}
+const createCesiumComponent = <E, P, C, CC = {}, R = {}>(
+  opts: CesiumComponentOption<E, P, C, CC, R>,
+): ComponentOptions<CesiumComponentOption<E, P, C, CC, R>> => {
+  const CesiumComponent = Vue.extend({
+    name: opts.name,
+    props: opts.$props,
+    // created() {},
+  }) as ComponentOptions<CesiumComponentOption<E, P, C, CC, R>>
+  return CesiumComponent
+}
 </script>
