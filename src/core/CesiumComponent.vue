@@ -22,14 +22,18 @@ export interface CesiumComponentOption<E, P, C> {
   cesiumReadonlyProps: (keyof P)[]
 }
 
+interface dataType<T> {
+  ce: T | null
+}
+
 const createCesiumComponent = <E, P, C>(
   opts: CesiumComponentOption<E, P, C>,
 ): ComponentOptions<Vue> => {
   const CesiumComponent = Vue.extend({
     name: opts.name,
-    data() {
+    data(): dataType<E> {
       return {
-        ce:
+        ce: null,
       }
     },
     created() {
